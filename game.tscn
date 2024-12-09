@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgy0rid0mukmr"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_ukutj"]
+[ext_resource type="Texture2D" uid="uid://bcrtg72x3nims" path="res://Necromancer.png" id="2_2pk2v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55l0y"]
+size = Vector2(9, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1j425"]
+size = Vector2(14, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3vyw"]
+size = Vector2(133.455, 20)
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" type="Node2D" parent="."]
+script = ExtResource("1_ukutj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(66, 223)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_2pk2v")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(320, 180)
+
+[node name="RayCast2D" type="RayCast2D" parent="Player"]
+position = Vector2(63, 227)
+target_position = Vector2(-0.0519333, 13.7298)
+
+[node name="Hitbox" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hitbox"]
+position = Vector2(63, 220)
+shape = SubResource("RectangleShape2D_55l0y")
+
+[node name="Headbox" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Headbox"]
+position = Vector2(63.5791, 208.491)
+shape = SubResource("RectangleShape2D_1j425")
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Areas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/StaticBody2D"]
+position = Vector2(82.9852, 270.719)
+shape = SubResource("RectangleShape2D_m3vyw")
+debug_color = Color(0, 0.6, 0.701961, 0.721569)
